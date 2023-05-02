@@ -149,6 +149,14 @@ class RegistrationController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        viewModel.networkError
+            .subscribe(onNext: { error in
+                let alert = UIAlertController(title: "", message: "\(error.localizedDescription)", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                self.present(alert, animated: true)
+            })
+            .disposed(by: disposeBag)
+        
     }
     
 }
